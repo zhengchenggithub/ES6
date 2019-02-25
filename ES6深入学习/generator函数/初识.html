@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+function *show() {
+    alert('zc');
+    yield ;//-暂停放弃执行下面的函数
+    alert('a');
+}
+let genObj = show();
+genObj.next();
+genObj.next();
+</script>
+</body>
+</html>

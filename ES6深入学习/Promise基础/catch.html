@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    function loadImg(url) {
+        return new Promise((resolve,reject)=>{
+            let img = new Image();
+            img.src = url;
+            img.onload = function () {
+                resolve(img);
+            };
+            img.onerror = function (err) {
+                reject(err)
+            }
+        })
+    }
+    loadImg("http://s8.sinaimg.cn/mw690/006PhMfPzy7d2CohKPt67&690").then((img)=>{
+        box.appendChild(img);
+    }).catch((err)=>{
+        //catch捕获错误的，如果new Promise中错误会被捕获，如果then中的回调有错误也会被捕获。
+        //一般情况在最后加一个catch
+        console.log(err);
+    })
+</script>
+</body>
+</html>

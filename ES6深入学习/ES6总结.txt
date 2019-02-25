@@ -1,0 +1,61 @@
+ES6粗略总结：
+1.变量
+    var 重复声明，函数级
+    let 不能重复声明，块级作用，变量
+    const 不能重复声明，块级作用，常量
+2.箭头函数
+    a.方便
+        i.如果只有一个参数，（）可以省
+        ii，如果只有一个return，{}可以省
+    b.修正this
+        this相对正常
+3.参数扩展
+    a.收集
+    b.扩展
+    c.默认参数
+        function show（a，b=5）{}
+4.数组方法
+    map         映射
+    reduce      汇总，一堆-》一个。适合：转换，总数
+    filter      过滤，一堆-》剩下的。适合：筛选
+    forEach     循环
+5.字符串
+    statsWith/endsWith
+    字符串模板：`${a}xxx${b}`
+6.Promise
+    封装异步操作
+    Promis。all([]).
+7.generator
+    function *show(){
+        yield
+        }
+8.JSON
+    JSON.stringify() =>从一个对象中解析出字符串
+    JSON.parse()     =>从一个字符串中解析出json对象
+9.面向对象
+    //类
+    class Test{
+        constructor(){
+            this.xxx = xxx;
+        }
+        方法1(){
+
+        }
+        方法1(){
+
+        }
+        方法1(){
+
+        }
+    }
+    //继承
+    class class2 extends class1{
+        constructor(){}
+        super();
+    }
+
+10.解构赋值
+    let[a,b,c] = [12,5,8];
+    a.左右结构一样
+    b.右边必须合法
+    c.声明赋值一次完成

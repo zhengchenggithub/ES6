@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    //yield既可以传参；第一步参数使用传统方法传参；
+    // function *show() {
+    //     alert('z');
+    //     let a = yield ;
+    //     alert('b');
+    //     alert(a);
+    // }
+    // let gen = show();
+    // gen.next(12);
+    // gen.next(5);
+    //yield也可以返回；最后一步返回使用传统方法返回；
+    function *show() {
+        alert('z');
+        yield 12;
+        alert('b');
+    }
+    let gen = show();
+    let res1 = gen.next();
+    console.log(res1);//{value: 12, done: false}
+    let res2 = gen.next();//
+    console.log(res2);//{value: undefined, done: true}
+</script>
+</body>
+</html>

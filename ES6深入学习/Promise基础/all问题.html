@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //console.dir(Promise);
+    //Promise.all([每一项都是Promise，如果不是默认转为Promise])
+    //数组中的每一项都是成功，才会走成功回调，默认将每一项的参数放在一个数组中传给回调函数
+    //只要有一个有错误，就会走错误的回调。（将第一个错误参数传给回调）
+    let p1 = new Promise((resolve,reject)=>{
+        resolve('OK');
+    })
+    let p2 = new Promise((resolve,reject)=>{
+        resolve('OK');
+    })
+    let p3 = new Promise((resolve,reject)=>{
+        resolve('OK');
+    })
+    let Pall = Promise.all([p1,p2,p3]);
+    Pall.then((res)=>{
+        console.log(res);
+    }).catch((err)=>{
+        consolve.log(err);
+    })
+</script>
+</body>
+</html>

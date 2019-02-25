@@ -1,0 +1,87 @@
+异步操作：
+1.普通回调
+2.Promise
+3.generator
+//回调
+$.ajax({
+    url:'',
+    dataType:'json',
+        success(data1){
+            $.ajax({
+                url:'',
+                dataType:'json',
+                success(data2){
+                },
+                error(){
+                    alert('错误');}
+                });
+        },
+        error(){
+            alert('错误');
+        };
+    })
+
+//Promise
+Promise.all([
+    $.ajax({url:'',dataTypr:'json'});
+    $.ajax({url:'',dataTypr:'json'});
+    $.ajax({url:'',dataTypr:'json'});
+ ]).then(result=>{
+        //结果
+     },err=>{
+     alert("错误");
+     })
+ //generator
+ runner(function *(){
+        let data1 = yield $.ajax({url:'',dataType:'json'});
+        let data2 = yield $.ajax({url:'',dataType:'json'});
+        let data3 = yield $.ajax({url:'',dataType:'json'});
+ })
+
+
+----------------------------------------------------------------------------------------
+带逻辑的Promise
+Promise.all([
+    $.ajax({url:'getUserData',dataType:'json'});
+]).then(results=>{
+    let userData = result[0];
+    if(userData.type == 'VIP'){
+            Promise.all({
+                $.ajax({url:'getUserItem',dataType:'json'});
+             }).then(result=>{
+                        let items = result[0];
+                        //生成....
+                    },err=>{
+                        alert('错误');
+            });
+    }else{
+        Promise.all({
+            $.ajax({url:'getItem',dataType:'json'});
+         }).then(result=>{
+                    let items = result[0];
+                    //生成....
+                },err=>{
+                    alert('错误');
+        });
+
+    }
+    },err=>{
+        alert('错误');
+    })
+带逻辑的generator
+runner(function *(){
+    let userData = yield $.ajax({url:'getUserData',dataType:'json'});
+    if(userData.type == "VIP"){
+        let items = yield $.ajax({url:'getVIPItems',dataType:'json'});
+    }else{
+        let items = yield $.ajax({url:'getItems',dataType:'json'});
+    }
+});
+
+//生成。。。。。。。。。。。。。
+
+
+
+总结：
+    1.Promise适合一此读取一堆的数据
+    2.generator适合逻辑性强的数据读取

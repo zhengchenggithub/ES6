@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //执行顺序
+    //new Promise 中的函数 ==> 当前队列中的同步代码 ==> 再执行回调函数中的代码
+
+
+    let pro1 = new Promise((resolve,reject)=>{
+        //resolve  函数
+        //rejecet  函数
+        //resolve和reject只能执行一个
+        //如果在 new Promise中出行错误，就会执行then中的第二个回调函数
+        console.log('promise');
+        resolve('success')//成功执行
+        reject('error')//执行失败
+    })
+    pro1.then((res)=>{
+        //resolve 成功的回调
+        console.log(res);
+    },(err)=>{
+        //reject 失败的回调
+        console.log(err);
+        }
+    )
+    console.log('zc');
+</script>
+</body>
+</html>

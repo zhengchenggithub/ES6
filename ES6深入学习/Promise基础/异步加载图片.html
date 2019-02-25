@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    function loadImg(url) {
+        return new Promise((resolve,reject)=>{
+            let img = new Image();
+            img.src = url;
+            img.onload = function () {
+                resolve(img);
+            };
+            img.onerror = function (err) {
+                reject(err)
+            }
+        })
+    }
+    loadImg("http://hbimg.b0.upaiyun.com/67ff9abc06fccb83a33ea83ad261b58687a1177e1855e-WdQOs0_fw658").then((img)=>{
+        box.appendChild(img);
+    },(err)=>{
+console.log(err);
+    })
+</script>
+</body>
+</html>
